@@ -1,0 +1,60 @@
+.feedcontainer {
+  height: 200px;
+  position: relative;
+  left: 25%;
+}
+
+.foryoucol {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 1rem;
+    border-radius: 25px;
+    margin: 0.5rem;
+    background-color: #313131;
+    height: 10vh;    
+  }
+
+  button{
+    background-color: #31313100;
+    color: white;
+    text-decoration: solid;
+    font-size: 15px;
+    text-align: center;
+    display: flex;
+  }
+
+  .feedpost {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 25px;
+    margin: 0.5rem;
+    background-color: #313131;
+    height: 100vh;
+  }
+
+  input {
+    display: flex;
+    align-items: top;
+    width: 100%;
+    margin: 0.5rem;
+    margin-bottom: 55rem; 
+}
+
+.feedsubmit {
+    display: flex;
+    margin-bottom: 87%;
+    background-color: white;
+    color: black;
+}
+  
+h2{
+    font-weight: lighter;
+}
+
