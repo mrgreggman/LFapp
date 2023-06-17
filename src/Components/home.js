@@ -16,7 +16,8 @@ export default function Home(){
     <div className={styles.feedcontainer}>
         <Button className={styles.msgbtn} shape='circle' size='large' icon={<MessageOutlined />}  />
         <Row>
-         <Col className={styles.foryoucol} span={13}><button>For You</button></Col>
+        <Col className={styles.foryoucol} span={6}><button>For You</button></Col>
+        <Col className={styles.followcol} span={6}><button>Following</button></Col>
         </Row>
         <Row>
          <Col className={styles.feedpost} span={13}>

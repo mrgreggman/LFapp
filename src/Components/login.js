@@ -14,6 +14,7 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     
+    
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -21,6 +22,12 @@ export default function Login() {
 
     function handleSubmit(event){
         event.preventDefault();
+        if (email.length === 0) {
+            alert('Please enter a valid email address')
+        }
+        if (password.length === 0){
+            alert('Please enter a valid password')
+        }
     }
 
         return(

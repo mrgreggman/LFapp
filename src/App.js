@@ -10,7 +10,7 @@ import Logo from './Components/logo';
 function App() {
 
   return (
-    <div className='App'>
+    <div >
       <Routes>
         <Route path='/login' element={<Login />}/>
         <Route path='/register' element={<Register />}/>

@@ -4,7 +4,7 @@
   left: 25%;
 }
 
-.foryoucol {
+.foryoucol, .followcol {
     text-align: center;
     display: flex;
     align-items: center;
@@ -14,16 +14,17 @@
     border-radius: 25px;
     margin: 0.5rem;
     background-color: #313131;
-    height: 10vh;    
+    height: 10vh;
   }
 
-  button{
+  .feedcontainer button{
     background-color: #31313100;
     color: white;
     text-decoration: solid;
     font-size: 15px;
     text-align: center;
     display: flex;
+    border: none;
   }
 
   .feedpost {
@@ -39,7 +40,7 @@
     height: 100vh;
   }
 
-  input {
+  .feedcontainer input {
     display: flex;
     align-items: top;
     width: 100%;
@@ -49,12 +50,13 @@
 
 .feedsubmit {
     display: flex;
+    padding: 0.8rem;
     margin-bottom: 87%;
     background-color: white;
     color: black;
 }
   
-h2{
+.feedcontainer h2{
     font-weight: lighter;
 }
 
