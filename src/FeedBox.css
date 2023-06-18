@@ -1,0 +1,32 @@
+.feedBox {
+    padding-bottom: 10px;
+    border-bottom: 8px solid var(--twitter-background);
+    padding-right: 10px;
+}
+
+.feedBox_input{
+    display: flex;
+    padding: 20px;
+}
+
+.feedBox_input > input{
+    flex: 1;
+    margin-left: 20px;
+    font-size: 20px;
+    border: none;
+}
+
+.feedBox > form{
+    display: flex;
+    flex-direction: column;
+}
+
+.feed_button {
+    background-color: var(--twitter-background) !important;
+    border: none !important;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    border-radius: 30px !important;
+    margin-top: 20px !important;
+    height: 50px !important;
+}
