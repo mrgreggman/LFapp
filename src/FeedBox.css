@@ -1,32 +1,43 @@
 .feedBox {
     padding-bottom: 10px;
-    border-bottom: 8px solid var(--twitter-background);
+    border-bottom: 8px solid var(--app-background);
     padding-right: 10px;
 }
 
-.feedBox_input{
+.feedBox_input {
     display: flex;
     padding: 20px;
+    border: solid;
+    border-radius: 20px;
+    
 }
 
-.feedBox_input > input{
-    flex: 1;
+
+.feedBox_input > input {
     margin-left: 20px;
     font-size: 20px;
     border: none;
 }
 
-.feedBox > form{
+.feedBox > form {
     display: flex;
     flex-direction: column;
 }
 
 .feed_button {
-    background-color: var(--twitter-background) !important;
+    background-color: var(--app-background) !important;
     border: none !important;
     font-weight: 900 !important;
     text-transform: inherit !important;
     border-radius: 30px !important;
     margin-top: 20px !important;
     height: 50px !important;
+}
+
+.feedbox_post > input {
+    border: solid;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+
 }

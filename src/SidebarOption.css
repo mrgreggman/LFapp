@@ -2,6 +2,8 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    padding-top: 20px;
+    padding-left: 20px;
 }
 
 .sidebarOption:hover{
@@ -17,10 +19,19 @@
 
 .sidebarOption > h2 {
     font-weight: 800;
-    font-size: 20px;
-    margin-right: 20px;
+    font-size: 15px;
+    padding: 10px 0px 10px 10px;
 }
 
 .sidebarOption__active {
     color: var(--twitter-color);
+}
+
+.sidebarOption > img {
+    height: 40px;
+    width: 40px;
+    background-color: var(--app-color);
+    border: 1px solid var(--app-color);
+    border-radius: 10px;
+    
 }

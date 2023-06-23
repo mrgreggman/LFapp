@@ -1,13 +1,19 @@
 body {
-    --twitter-color: #50b7f5;
-    --twitter-background: #e6ecf0;
+    --app-color: #686868;
+    --app-background: #2c2d2e;
+    --app-background-dark: #1f1f20;
+}
+
+.app_container {
+    background-color: var(--app-background-dark);
 }
 
 .app {
-    display: flex;
     height: 100vh;
-    max-width: 1300px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 10px;
+    background-color: var(--app-background);
+    
 }
+
+

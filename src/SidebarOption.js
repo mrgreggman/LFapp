@@ -2,10 +2,10 @@ import React from 'react';
 import './SidebarOption.css';
 
 
-function SidebarOption({active, text, Icon}) {
+function SidebarOption({active, text, logoPath}) {
     return (
         <div className={`sidebarOption ${active && 'sidebarOption__active'}`}>
-            <Icon />
+            <img src={logoPath} />
             <h2>{text}</h2>
             
         </div>
