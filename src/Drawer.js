@@ -20,8 +20,10 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import Feed from './Feed';
 import Featured from './Widgets'
+import Search from './Search';
 
-const drawerWidth = 240;
+
+const drawerWidth = 220;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -113,12 +115,13 @@ export default function MiniDrawer() {
             sx={{
               marginRight: 5,
               ...(open && { display: 'none' }),
-            }}
-          >
-            <MenuIcon />
+            }} >
+              <MenuIcon />
           </IconButton>
         </Toolbar>
+        
       </AppBar>
+      
       <Drawer variant="permanent" open={open}
             onMouseOver={handleDrawerOpen}
             onMouseOut={handleDrawerClose}>
@@ -129,7 +132,7 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Home', 'Profile', 'Friends', 'Settings', 'Logout'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -154,7 +157,7 @@ export default function MiniDrawer() {
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['Destiny 2', 'League of Legends', 'CS:GO', 'Dota 2', 'Call of Duty', 'Rainbow 6 Siege'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -168,8 +171,7 @@ export default function MiniDrawer() {
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
-                  }}
-                >
+                  }} >
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
@@ -180,10 +182,14 @@ export default function MiniDrawer() {
       </Drawer>
       <div>
         <DrawerHeader />
+
+      <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+        <Search />
+        </div>
+
         <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyItems:'center'}}>
         <div style={{display:'flex', flexDirection:'row'}}>
             <Feed />
-            <Featured />
         </div>
         </div>
       </div>

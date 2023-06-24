@@ -24,16 +24,6 @@
     flex-direction: column;
 }
 
-.feed_button {
-    background-color: var(--app-background) !important;
-    border: none !important;
-    font-weight: 900 !important;
-    text-transform: inherit !important;
-    border-radius: 30px !important;
-    margin-top: 20px !important;
-    height: 50px !important;
-}
-
 .feedbox_post > input {
     border: solid;
     border-radius: 20px;

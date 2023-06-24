@@ -5,7 +5,7 @@ import Post from './Post';
 import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
 import { db } from './firebase'; // Assuming you have a separate 'firebase.js' file
 import FlipMove from 'react-flip-move';
-import SearchIcon from '@mui/icons-material/Search';
+
 
 function Feed() {
   const [posts, setPosts] = useState([]);
@@ -23,14 +23,10 @@ function Feed() {
 
   return (
     <div className="feed">
-      <div className="feed_header">
-        <SearchIcon className='widget_search' />
-        <input textAlign={'center'} placeholder='search' type='text'   />
-      </div>
-
       <FlipMove>
-    <div className='posts_container'>
+    <div className='feed_container'>
       <FeedBox />
+    <div className='posts_container'>
       {posts.map((post) => (
         <Post
           key={post.id} 
@@ -41,6 +37,7 @@ function Feed() {
           image={post.image}
         />
       ))}
+      </div>
     </div>
       </FlipMove>
     </div>
