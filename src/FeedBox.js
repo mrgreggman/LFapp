@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button } from '@mui/material';
 import { db } from './firebase';
@@ -15,12 +15,13 @@ import { ImageRounded } from '@mui/icons-material';
 import Previews from './DragDrop';
 import './FeedBox.css';
 import post from './PostCard';
-
+import { GameContext } from './context/GameContext';
 
 function FeedBox({ onNewPost }) {
   const [postMessage, setPostMessage] = useState('');
   const [isPostButtonEnabled, setIsPostButtonEnabled] = useState(false);
   const [image, setimage] = useState(null);
+  const gameContext = useContext(GameContext);
 
   /* handles declining post */
 
@@ -40,7 +41,7 @@ function FeedBox({ onNewPost }) {
 
   const sendPost = async (e) => {
     e.preventDefault();
-    await axios.post('https://localhost:7224/api/Posts', { displayName: 'test', username: 'test', message: postMessage, postTime: new Date() })
+    await axios.post('https://localhost:7224/api/Posts', { displayName: 'test', username: 'test', message: postMessage, postTime: new Date(), gameId:gameContext.game.gameId})
     onNewPost()
   };
 

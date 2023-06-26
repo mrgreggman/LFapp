@@ -22,6 +22,7 @@ import Feed from './Feed';
 import Featured from './Widgets'
 import Search from './Search';
 import axios from 'axios';
+import { GameContext } from './context/GameContext';
 
 
 const drawerWidth = 220;
@@ -95,7 +96,7 @@ export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [games, setGames] = React.useState([]);
-
+  const gameContext = React.useContext(GameContext);
 
   async function getGames() {
     let result = await axios.get('https://localhost:7224/api/Games')
@@ -174,7 +175,7 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {games.map((game, index) => (
-            <ListItem key={game.name} disablePadding sx={{ display: 'block' }}>
+            <ListItem onClick={() => gameContext.setGame(game)} key={game.name} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,

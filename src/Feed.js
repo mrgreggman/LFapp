@@ -10,41 +10,31 @@ function Feed() {
   const [currentGame, setCurrentGame] = React.useState({});
 
   async function getPosts() {
-    let result = await axios.get('https://localhost:7224/api/Posts')
+    let result = await axios.get('https://localhost:7224/api/Posts');
     if (result.status === 200) {
-      setPosts(await result.data)
+      setPosts(await result.data);
     }
-
   }
 
   function onNewPost() {
-    getPosts()
+    getPosts();
   }
 
   React.useEffect(() => {
-    getPosts()
-  }, [])
+    getPosts();
+  }, []);
 
   return (
-  <GameContext.provider 
-    value={{
-      currentGame,
-      setCurrentGame}}>
-    <div className="feed">
-      <div className='feed_container'>
-        <FeedBox
-          onNewPost={onNewPost} />
-        <div className='posts_container'>
-          {posts.map((post, index) => (
-            <PostCard
-              key={index}
-              post={post}
-            />
-          ))}
+      <div className="feed">
+        <div className="feed_container">
+          <FeedBox onNewPost={onNewPost} />
+          <div className="posts_container">
+            {posts.map((post, index) => (
+              <PostCard key={index} post={post} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-    </GameContext.provider>
   );
 }
 

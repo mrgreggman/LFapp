@@ -29,13 +29,22 @@ export const DashboardProvider = ({ children }) => {
   const [gameId, setGameId] = useState(defaultState.gameId);
   const [game, setGame] = useState(defaultState.game);
   const [feed, setFeed] = useState(defaultState.feed);
+  const [gamesList, setGamesList] = useState();
+
+  const handleGameChange = (gameId) => {
+      setGameId(gameId);
+      loadGame(gameId).then((game) => {
+      setGame(game);
+      setFeed(game.feed);
+    });
+  };
 
   return (
     <GameContext.Provider
       value={{
         game,
         gameId,
-        setGame,
+        handleGameChange,
         feed,
       }}
     >
@@ -43,5 +52,3 @@ export const DashboardProvider = ({ children }) => {
     </GameContext.Provider>
   );
 };
-
-export default DashboardProvider;

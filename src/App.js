@@ -6,6 +6,7 @@ import './App.css';
 import MiniDrawer from './Drawer';
 import { red } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import GameContext from './context/GameContext';
 
 const darkTheme = createTheme({
   palette: {
@@ -17,11 +18,13 @@ function App() {
 
 
   return <ThemeProvider theme={darkTheme}>;
+    <GameContext>
       <div className='app'>
 
         <MiniDrawer />
 
       </div>
+    </GameContext>
 </ThemeProvider>;
 }
 
