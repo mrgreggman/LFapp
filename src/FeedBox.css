@@ -12,6 +12,9 @@
     
 }
 
+.postbutton {
+    margin-top: 20px;
+}
 
 .feedBox_input > input {
     margin-left: 20px;
@@ -30,4 +33,8 @@
     padding: 20px;
     display: flex;
 
+}
+
+.feedboxbutton {
+    margin-top: 10px;
 }

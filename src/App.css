@@ -9,11 +9,11 @@ body {
 }
 
 .app {
-    height: 100vh;
     margin-left: auto;
     margin-right: auto;
     background-color: var(--app-background);
     position: relative;
+    background-color: var(--app-background);
+
+    
 }
-
-

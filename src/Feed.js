@@ -1,46 +1,50 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import './Feed.css';
 import FeedBox from './FeedBox';
-import Post from './Post';
-import { getFirestore, collection, onSnapshot } from 'firebase/firestore';
-import { db } from './firebase'; // Assuming you have a separate 'firebase.js' file
-import FlipMove from 'react-flip-move';
-
+import axios from 'axios';
+import PostCard from './PostCard';
+import { GameContext } from './context/GameContext';
 
 function Feed() {
   const [posts, setPosts] = useState([]);
+  const [currentGame, setCurrentGame] = React.useState({});
 
-  useEffect(() => {
-      const unsubscribe = onSnapshot(collection(db, 'posts'), (snapshot) => {
-      const postsData = snapshot.docs.map((doc) => doc.data());
-      setPosts(postsData);
-    },[]);
+  async function getPosts() {
+    let result = await axios.get('https://localhost:7224/api/Posts')
+    if (result.status === 200) {
+      setPosts(await result.data)
+    }
 
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+  }
+
+  function onNewPost() {
+    getPosts()
+  }
+
+  React.useEffect(() => {
+    getPosts()
+  }, [])
 
   return (
+  <GameContext.provider 
+    value={{
+      currentGame,
+      setCurrentGame}}>
     <div className="feed">
-      <FlipMove>
-    <div className='feed_container'>
-      <FeedBox />
-    <div className='posts_container'>
-      {posts.map((post) => (
-        <Post
-          key={post.id} 
-          displayName={post.displayName}
-          username={post.username}
-          text={post.text}
-          avatar={post.avatar}
-          image={post.image}
-        />
-      ))}
+      <div className='feed_container'>
+        <FeedBox
+          onNewPost={onNewPost} />
+        <div className='posts_container'>
+          {posts.map((post, index) => (
+            <PostCard
+              key={index}
+              post={post}
+            />
+          ))}
+        </div>
       </div>
     </div>
-      </FlipMove>
-    </div>
+    </GameContext.provider>
   );
 }
 

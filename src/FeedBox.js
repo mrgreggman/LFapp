@@ -1,116 +1,90 @@
 import React, { useEffect, useState } from 'react';
-import './FeedBox.css';
+import axios from 'axios';
 import { Button } from '@mui/material';
 import { db } from './firebase';
 import { collection, addDoc } from 'firebase/firestore';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
-import imgIcon from '@mui/icons-material/PhotoSizeSelectActualRounded';
+import UploadIcon from '@mui/icons-material/PhotoSizeSelectActualRounded';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import GifIcon from '@mui/icons-material/GifBox';
 import PollIcon from '@mui/icons-material/Poll';
+import Imageholder from './Imageholder';
+import { ImageRounded } from '@mui/icons-material';
+import Previews from './DragDrop';
+import './FeedBox.css';
+import post from './PostCard';
 
-function FeedBox(props) {
+
+function FeedBox({ onNewPost }) {
   const [postMessage, setPostMessage] = useState('');
-  const [postImage, setPostImage] = useState('');
   const [isPostButtonEnabled, setIsPostButtonEnabled] = useState(false);
+  const [image, setimage] = useState(null);
 
+  /* handles declining post */
 
   useEffect(() => {
-    if (postMessage.length > 1) {
+    if (postMessage.length > 0 || image) {
       setIsPostButtonEnabled(true)
     } else {
       setIsPostButtonEnabled(false)
-      
+
     }
 
-  },[postMessage]);    
+  }, [postMessage]);
+
+
+
+  /* handles text post */
 
   const sendPost = async (e) => {
     e.preventDefault();
-
-    try {
-      await addDoc(collection(db, 'posts'), {
-        displayName: 'Test User',
-        username: 'testuser',
-        text: postMessage,
-        image: postImage,
-        avatar: '',
-      });
-
-      setPostMessage('');
-      setPostImage('');
-    } catch (error) {
-      console.error('Error adding post: ', error);
-    }
+    await axios.post('https://localhost:7224/api/Posts', { displayName: 'test', username: 'test', message: postMessage, postTime: new Date() })
+    onNewPost()
   };
+
 
   return (
     <div className='feedbox'>
-    <div className='feedbox_input'>
-      <form className='feedbox_post'onSubmit={sendPost}>
-      <TextField
-          fullWidth
-          id="outlined-multiline-flexible"
-          label="Post"
-          multiline
-          maxRows={4}
-          type="text"
-          placeholder="Enter post message"
-          value={postMessage}
-          onChange={(e) => setPostMessage(e.target.value)}>
+      <div className='feedbox_input'>
+        <form className='feedbox_post' onSubmit={sendPost}>
+          <TextField
+            fullWidth
+            id="outlined-multiline-flexible"
+            label="Post"
+            multiline
+            maxRows={4}
+            type="text"
+            image={image}
+            placeholder="Enter post message"
+            value={postMessage}
+            onChange={(e) => {
+              setPostMessage(e.target.value)
+            }}
+          >
           </TextField>
 
-          <Stack
-          style={{marginTop:'0.5rem'}}
-          direction="row" spacing={1}>
-
-          <IconButton
-          fontSize='large'
-          aria-label="delete">
-          <imgIcon />
-          </IconButton>
-
-          <IconButton
-          fontSize='large'
-          aria-label="delete">
-          <VideoLibraryIcon />
-          </IconButton>
-
-          <IconButton
-          fontSize='large'
-          aria-label="delete">
-          <GifIcon />
-          </IconButton>
-
-          <IconButton
-          fontSize='large'
-          aria-label="delete">
-          <PollIcon />
-          </IconButton>
-
-          
-          </Stack>
-       { /* <input
+          <Previews />
+          { /* <input
           type="text"
           placeholder="Enter post image URL"
           value={postImage}
           onChange={(e) => setPostImage(e.target.value)}
   /> */}
-        <Button
-
-        fullWidth
-        type="submit"
-        disabled={!isPostButtonEnabled}
-        >Send Post
-        </Button>
-      </form>
-    </div>
+          <Button style={{ marginTop: "0.5vh" }}
+            variant='contained'
+            fullWidth
+            type="submit"
+            disabled={!isPostButtonEnabled}
+          >
+            Send Post
+          </Button>
+        </form>
+      </div>
     </div>
   );
 }
-
 
 
 export default FeedBox;

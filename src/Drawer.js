@@ -21,6 +21,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import Feed from './Feed';
 import Featured from './Widgets'
 import Search from './Search';
+import axios from 'axios';
 
 
 const drawerWidth = 220;
@@ -93,6 +94,21 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [games, setGames] = React.useState([]);
+
+
+  async function getGames() {
+    let result = await axios.get('https://localhost:7224/api/Games')
+    if (result.status === 200) {
+      setGames(await result.data)
+    }
+
+  }
+
+  React.useEffect(() => {
+    getGames()
+  }, [])
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -116,15 +132,15 @@ export default function MiniDrawer() {
               marginRight: 5,
               ...(open && { display: 'none' }),
             }} >
-              <MenuIcon />
+            <MenuIcon />
           </IconButton>
         </Toolbar>
-        
+
       </AppBar>
-      
+
       <Drawer variant="permanent" open={open}
-            onMouseOver={handleDrawerOpen}
-            onMouseOut={handleDrawerClose}>
+        onMouseOver={handleDrawerOpen}
+        onMouseOut={handleDrawerClose}>
         <DrawerHeader>
           <IconButton onMouseLeave={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -142,7 +158,7 @@ export default function MiniDrawer() {
                 }}
               >
                 <ListItemIcon
-                sx={{
+                  sx={{
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
@@ -157,8 +173,8 @@ export default function MiniDrawer() {
         </List>
         <Divider />
         <List>
-          {['Destiny 2', 'League of Legends', 'CS:GO', 'Dota 2', 'Call of Duty', 'Rainbow 6 Siege'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {games.map((game, index) => (
+            <ListItem key={game.name} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -174,7 +190,7 @@ export default function MiniDrawer() {
                   }} >
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={game.name} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -183,14 +199,14 @@ export default function MiniDrawer() {
       <div>
         <DrawerHeader />
 
-      <div style={{display:'flex', justifyContent:'center', alignItems:'center'}}>
-        <Search />
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Search />
         </div>
 
-        <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyItems:'center'}}>
-        <div style={{display:'flex', flexDirection:'row'}}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyItems: 'center' }}>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
             <Feed />
-        </div>
+          </div>
         </div>
       </div>
     </div>
