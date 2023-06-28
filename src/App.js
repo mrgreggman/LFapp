@@ -3,9 +3,9 @@ import Feed from './components/Feed/Feed';
 import MiniDrawer from './components/Drawer/Drawer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import Friends from './Pages/Friends/Friends';
+import Settings from './Pages/Settings/Settings';
 import './App.css';
-import FeedBox from './components/FeedBox/FeedBox';
-
 
 const darkTheme = createTheme({
   palette: {
@@ -21,8 +21,8 @@ function App() {
       <MiniDrawer>
         <Routes>
           <Route path="/" element={<Feed />} />
-          <Route path="/Friends" element={<p>Friends</p>} />
-          <Route path="/Settings" element={<p>Settings</p>} />
+          <Route path="/Friends" element={<Friends />} />
+          <Route path="/Settings" element={<Settings />} />
           <Route path="/Profile" element={<p>Profile</p>} />
           <Route path="/Logout" element={<p>Logout</p>} />
         </Routes>

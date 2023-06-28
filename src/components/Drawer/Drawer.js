@@ -19,6 +19,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import Search from '../Search/Search';
 import axios from 'axios';
 import { GameContext } from '../../context/GameContext';
+import Settings from '../../Pages/Settings/Settings';
+import './Drawer.css';
 
 
 const drawerWidth = 220;
@@ -118,7 +120,7 @@ const PageLayout = ({ children }) => {
 
 
   return (
-    <div >
+    <div className='Appbar'>
       <CssBaseline />
       <AppBar position="fixed" color='primary' open={open}>
         <Toolbar>
@@ -133,6 +135,9 @@ const PageLayout = ({ children }) => {
             }} >
             <MenuIcon />
           </IconButton>
+          <div className='AppBarSettings'>
+            <Settings />
+          </div>
         </Toolbar>
 
       </AppBar>
@@ -198,7 +203,7 @@ const PageLayout = ({ children }) => {
       <div>
         <DrawerHeader />
 
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flex: 0.4, justifyContent: 'center', alignItems: 'center' }}>
           <Search />
         </div>
 
