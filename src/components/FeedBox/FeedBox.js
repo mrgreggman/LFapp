@@ -31,8 +31,10 @@ function FeedBox({ onNewPost }) {
 
   const sendPost = async (e) => {
     e.preventDefault();
-    await axios.post('https://localhost:7224/api/Posts', { displayName: 'test', username: 'test', message: postMessage, postTime: new Date(), gameId:gameContext.game.gameId})
+
+    await axios.post('https://localhost:7224/api/Posts', { displayName: 'test', username: 'test', message: postMessage, postTime: new Date(), gameId:null})
     onNewPost()
+
   };
 
 

@@ -26,16 +26,16 @@ function Feed() {
   }, []);
 
   return (
-      <div className="feed">
-        <div className="feed_container">
-          <FeedBox onNewPost={onNewPost} />
-          <div className="posts_container">
-            {posts.map((post, index) => (
-              <PostCard key={index} post={post} />
-            ))}
-          </div>
+    <div className="feed">
+      <div className="feed_container">
+        <FeedBox onNewPost={onNewPost} />
+        <div className="posts_container">
+          {posts.map((post, index) => (
+            <PostCard key={index} post={post} />
+          ))}
         </div>
       </div>
+    </div>
   );
 }
 
