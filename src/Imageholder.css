@@ -1,9 +1,0 @@
-.image_holder{
-    width: 100%;
-    text-align: center;
-}
-
-.image_holder > img{
-    height: 100%;
-    margin-top: 10px;
-}

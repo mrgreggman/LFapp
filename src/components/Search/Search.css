@@ -1,0 +1,11 @@
+.search_bar {
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    background-color: var(--app-background-dark);
+    color: var(--app-background-dark);
+}
+
+.search_icon {
+    margin-bottom: 1.8rem;
+    margin-left: 0.5rem;
+}

@@ -1,0 +1,40 @@
+.feedBox {
+    padding-bottom: 10px;
+    border-bottom: 8px solid var(--app-background);
+    padding-right: 10px;
+}
+
+.feedBox_input {
+    display: flex;
+    padding: 20px;
+    border: solid;
+    border-radius: 20px;
+    
+}
+
+.postbutton {
+    margin-top: 20px;
+}
+
+.feedBox_input > input {
+    margin-left: 20px;
+    font-size: 20px;
+    border: none;
+}
+
+.feedBox > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedbox_post > input {
+    border: solid;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+
+}
+
+.feedboxbutton {
+    margin-top: 10px;
+}
