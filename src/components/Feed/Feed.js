@@ -11,7 +11,7 @@ function Feed() {
   const [currentGame, setCurrentGame] = useState({});
 
   async function getPosts() {
-    let result = await axios.get('https://localhost:7224/api/Posts');
+    let result = await axios.get('http://localhost:5277/api/Posts');
     if (result.status === 200) {
       setPosts(await result.data);
     }

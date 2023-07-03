@@ -8,6 +8,7 @@ import Settings from './Pages/Settings/Settings';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import './App.css';
+import DashboardProvider from './context/GameContext';
 
 const darkTheme = createTheme({
   palette: {
@@ -20,6 +21,7 @@ function App() {
 
   return <ThemeProvider theme={darkTheme}>;
     <Router>
+      <DashboardProvider>
       <MiniDrawer>
         <Routes>
           <Route path="/" element={<Feed />} />
@@ -31,6 +33,7 @@ function App() {
           <Route path="/Register" element={<Register />} />
         </Routes>
       </MiniDrawer>
+      </DashboardProvider>
     </Router>
   </ThemeProvider>;
 }

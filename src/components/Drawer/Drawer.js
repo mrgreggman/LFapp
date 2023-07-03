@@ -98,7 +98,7 @@ const PageLayout = ({ children }) => {
 
 
   async function getGames() {
-    let result = await axios.get('https://localhost:7224/api/Games')
+    let result = await axios.get('http://localhost:5277/api/Games')
     if (result.status === 200) {
       setGames(await result.data)
     }
