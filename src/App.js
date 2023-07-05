@@ -4,8 +4,6 @@ import MiniDrawer from './components/Drawer/Drawer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
 import Friends from './Pages/Friends/Friends';
-import Settings from './Pages/Settings/Settings';
-import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import './App.css';
 import DashboardProvider from './context/GameContext';
@@ -26,10 +24,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Feed />} />
           <Route path="/Friends" element={<Friends />} />
-          <Route path="/Settings" element={<Settings />} />
           <Route path="/Profile" element={<p>Profile</p>} />
           <Route path="/Logout" element={<p>Logout</p>} />
-          <Route path="/Login" element={<Login />} />
+          <Route path="/Login" element={<p>Logout</p>} />
           <Route path="/Register" element={<Register />} />
         </Routes>
       </MiniDrawer>

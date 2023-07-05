@@ -11,6 +11,7 @@
     position: relative;
     z-index: 1;
     transition: all 0.3s ease-in-out;
+    width: 100%;
 }
 
 .fieldcontainer > button {
@@ -31,4 +32,17 @@
 .field {
     border : 1px solid white;
     border-radius: 5px;
+}
+
+.regbutton {
+    border : 1px solid white;
+    border-radius: 5px;
+    background-color: var(--appl-color);
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    width: 93%;
+    
 }

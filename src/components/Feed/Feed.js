@@ -13,7 +13,7 @@ function Feed() {
   async function getPosts() {
     let result = await axios.get('http://localhost:5277/api/Posts');
     if (result.status === 200) {
-      setPosts(await result.data);
+        setPosts(await result.data);
     }
   }
 
